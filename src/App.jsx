@@ -1,39 +1,44 @@
 import Header from "./components/Header";
-import WayToTeach from "./components/WayToTeach";
 import Button from "./components/Button/Button";
-import { ways } from "./data";
+import TeachingSection from "./components/TeachingSection";
+import { useState } from "react";
+import { differences } from "./data";
 
 function App() {
-    let content = "Нажми на кнопку";
+    const [contentType, setContentType] = useState(null);
+
     function handleClick(type) {
-        console.log("Button clicked, type: ", type);
-        content = type;
+        setContentType(type);
     }
+
     return (
         <div>
             <Header />
-
             <main>
-                <section>
-                    <h3>Hello React</h3>
-
-                    <ul>
-                        <WayToTeach {...ways[0]} />
-                        <WayToTeach {...ways[1]} />
-                        <WayToTeach {...ways[2]} />
-                    </ul>
-                </section>
-
+                <TeachingSection />
                 <section>
                     <h3>Шо мы? Кто мы?</h3>
-                    <Button onClick={() => handleClick("way")}>Подход</Button>
-                    <Button onClick={() => handleClick("easy")}>
-                        Доступность
+                    <Button
+                        isActive={contentType == "way"}
+                        onClick={() => handleClick("way")}
+                    >
+                        Approach
                     </Button>
-                    <Button onClick={() => handleClick("program")}>
-                        Концентрация
+                    <Button
+                        isActive={contentType == "easy"}
+                        onClick={() => handleClick("easy")}
+                    >
+                        Availability
                     </Button>
-                    <p>{content}</p>
+                    <Button
+                        isActive={contentType == "program"}
+                        onClick={() => handleClick("program")}
+                    >
+                        Concentration
+                    </Button>
+
+                    {!contentType && <p>Нажми на кнопку!</p>}
+                    {contentType && <p>{differences[contentType]}</p>}
                 </section>
             </main>
         </div>
