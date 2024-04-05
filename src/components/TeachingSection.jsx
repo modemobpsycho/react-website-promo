@@ -4,7 +4,7 @@ import { ways } from "../data";
 export default function TeachingSection() {
     return (
         <section>
-            <h3>Hello React</h3>
+            <h3>Teaching Section</h3>
 
             <ul>
                 {ways.map((way) => {
