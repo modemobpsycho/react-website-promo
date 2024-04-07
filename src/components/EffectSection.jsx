@@ -1,8 +1,10 @@
 import Button from "./Button/Button";
 import Modal from "./Modal/Modal";
 import { useState, useEffect, useCallback } from "react";
+import useInput from "../hooks/useInput";
 
 export default function EffectSection() {
+    const input = useInput();
     const [isOpen, setIsOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const [users, setUsers] = useState([]);
@@ -24,14 +26,12 @@ export default function EffectSection() {
     return (
         <section>
             <h3>Effects</h3>
-
             <Button
                 onClick={() => setIsOpen(true)}
                 style={{ marginBottom: "1rem" }}
             >
                 Open information
             </Button>
-
             <Modal open={isOpen}>
                 <h3>Hello from modal</h3>
                 <p>
@@ -42,13 +42,23 @@ export default function EffectSection() {
                 </p>
                 <Button onClick={() => setIsOpen(false)}>Close</Button>
             </Modal>
-
             {loading && <p>Loading...</p>}
-            {users.map((user) => (
-                <p key={user.id}>
-                    {user.name} - {user.email} - {user.phone}
-                </p>
-            ))}
+            {!loading && (
+                <>
+                    <input type="text" className="control" {...input} />
+                    {users
+                        .filter((user) =>
+                            user.name
+                                .toLowerCase()
+                                .includes(input.value.toLowerCase())
+                        )
+                        .map((user) => (
+                            <p key={user.id}>
+                                {user.name} - {user.email} - {user.phone}
+                            </p>
+                        ))}
+                </>
+            )}
         </section>
     );
 }
