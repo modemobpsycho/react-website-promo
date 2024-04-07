@@ -2,7 +2,7 @@ import Button from "./Button/Button";
 import { useRef, useState } from "react";
 
 function StateVsRef() {
-    const input = useRef();
+    const input = useRef<HTMLInputElement>(null);
     const [value, setValue] = useState("");
     return (
         <div>
@@ -24,11 +24,8 @@ export default function FeedbackSection() {
         hasError: false,
         reason: "help",
     });
-    // const [name, setName] = useState("");
-    // const [hasError, setHasError] = useState(false);
-    // const [reason, setReason] = useState("help");
 
-    function handleNameChange(event) {
+    function handleNameChange(event: React.ChangeEvent<HTMLInputElement>) {
         setForm((prev) => ({
             ...prev,
             name: event.target.value,
@@ -48,7 +45,7 @@ export default function FeedbackSection() {
                     className="control"
                     value={form.name}
                     style={{
-                        border: form.hasError ? "1px solid red" : null,
+                        border: form.hasError ? "1px solid red" : undefined,
                     }}
                     onChange={handleNameChange}
                 />
@@ -70,7 +67,11 @@ export default function FeedbackSection() {
                     <option value="suggest">Suggestion</option>
                 </select>
 
-                <Button disabled={form.hasError} isActive={!form.hasError}>
+                <Button
+                    onClick={() => alert(`50 Cent`)}
+                    isActive={form.name.length !== 0}
+                    disabled={form.name.length === 0}
+                >
                     Send
                 </Button>
             </form>

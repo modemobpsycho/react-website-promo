@@ -3,13 +3,14 @@ import EffectSection from "./components/EffectSection";
 import FeedbackSection from "./components/FeedbackSection";
 import Header from "./components/Header/Header";
 import IntroSection from "./components/IntroSection";
-import TabsSection from "./components/TabsSection";
+import TabsSection, { TabsSectionType } from "./components/TabsSection";
 import TeachingSection from "./components/TeachingSection";
 
 import { useState } from "react";
 
 function App() {
-    const [tab, setTab] = useState("effect");
+    const [tab, setTab] = useState<TabsSectionType>("effect");
+    console.log(tab);
     return (
         <>
             <Header />
@@ -17,7 +18,7 @@ function App() {
                 <IntroSection />
                 <TabsSection
                     active={tab}
-                    onChange={(current) => setTab(current)}
+                    onChange={(current: TabsSectionType) => setTab(current)}
                 />
                 {tab === "main" && (
                     <>

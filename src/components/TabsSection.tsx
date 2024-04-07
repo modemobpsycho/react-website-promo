@@ -1,6 +1,14 @@
 import Button from "./Button/Button";
 
-export default function TabsSection({ active, onChange }) {
+export type TabsSectionType = "main" | "feedback" | "effect";
+
+export interface TabsSectionProps {
+    active: TabsSectionType;
+    onChange: (current: TabsSectionType) => void;
+}
+
+export default function TabsSection({ active, onChange }: TabsSectionProps) {
+    console.log(active);
     return (
         <section style={{ marginBottom: "1rem" }}>
             <Button

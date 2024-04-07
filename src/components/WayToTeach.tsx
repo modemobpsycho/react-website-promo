@@ -1,4 +1,9 @@
-export default function WayToTeach({ title, description }) {
+interface WayToTeachProps {
+    title: string;
+    description: string;
+}
+
+export default function WayToTeach({ title, description }: WayToTeachProps) {
     return (
         <li>
             <p>

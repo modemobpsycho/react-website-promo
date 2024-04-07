@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import logo from "/vite.svg";
 import { styled } from "styled-components";
 
 const HeaderContainer = styled.header`
@@ -24,7 +23,7 @@ export default function Header() {
 
     return (
         <HeaderContainer>
-            <img src={logo} alt="Logo" />
+            <img src="/vite.svg" alt="Logo" />
             <span>Time now: {now.toLocaleTimeString()}</span>
         </HeaderContainer>
     );

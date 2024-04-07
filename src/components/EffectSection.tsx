@@ -2,12 +2,13 @@ import Button from "./Button/Button";
 import Modal from "./Modal/Modal";
 import { useState, useEffect, useCallback } from "react";
 import useInput from "../hooks/useInput";
+import { User } from "../types/user.interface";
 
 export default function EffectSection() {
     const input = useInput();
     const [isOpen, setIsOpen] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState<User[]>([]);
 
     const fetchUsers = useCallback(async () => {
         setLoading(true);
@@ -27,8 +28,8 @@ export default function EffectSection() {
         <section>
             <h3>Effects</h3>
             <Button
-                onClick={() => setIsOpen(true)}
                 style={{ marginBottom: "1rem" }}
+                onClick={() => setIsOpen(true)}
             >
                 Open information
             </Button>
