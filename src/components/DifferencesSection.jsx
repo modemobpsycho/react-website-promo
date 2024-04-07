@@ -10,7 +10,7 @@ export default function DifferencesSection() {
     }
     return (
         <section>
-            <h3>Шо мы? Кто мы?</h3>
+            <h3>About us</h3>
             <Button
                 isActive={contentType == "way"}
                 onClick={() => handleClick("way")}
@@ -30,7 +30,7 @@ export default function DifferencesSection() {
                 Concentration
             </Button>
 
-            {!contentType && <p>Нажми на кнопку!</p>}
+            {!contentType && <p>Click the button!</p>}
             {contentType && <p>{differences[contentType]}</p>}
         </section>
     );

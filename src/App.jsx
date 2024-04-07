@@ -1,4 +1,5 @@
 import DifferencesSection from "./components/DifferencesSection";
+import EffectSection from "./components/EffectSection";
 import FeedbackSection from "./components/FeedbackSection";
 import Header from "./components/Header/Header";
 import IntroSection from "./components/IntroSection";
@@ -8,7 +9,7 @@ import TeachingSection from "./components/TeachingSection";
 import { useState } from "react";
 
 function App() {
-    const [tab, setTab] = useState("feedback");
+    const [tab, setTab] = useState("effect");
     return (
         <>
             <Header />
@@ -25,6 +26,7 @@ function App() {
                     </>
                 )}
                 {tab === "feedback" && <FeedbackSection />}
+                {tab === "effect" && <EffectSection />}
             </main>
         </>
     );
