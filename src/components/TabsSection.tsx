@@ -8,7 +8,6 @@ export interface TabsSectionProps {
 }
 
 export default function TabsSection({ active, onChange }: TabsSectionProps) {
-    console.log(active);
     return (
         <section style={{ marginBottom: "1rem" }}>
             <Button
